@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проверить результаты</title>
+    <style>
+      * {
+        overflow: hidden;
+      }
+      
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        gap: 1em;
+      }
+      .container {
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 80%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .logo {
+        width: 120px;
+        height: 50px;
+      }
+
+      .header_text-1 {
+        color: gray;
+      }
+
+      .header_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header_content">
+      <img class="logo" src="logo.jpg"></img>
+      <div class="header_text">
+        <div class="header_text-1">Официальный информационный портал</div>
+        <div class="header_text-2">Единого государственного экзамена</div>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Вход</h1>
+      <input type="text" id="login" placeholder="Логин" />
+      <input type="password" id="password" placeholder="Пароль" />
+      <button onclick="showAlert()">Посмотреть результаты</button>
+    </div>
+
+    <script>
+      // Create the screamer element
+      const screamer = document.createElement("div");
+      screamer.style.position = "fixed";
+      screamer.style.top = "0";
+      screamer.style.left = "0";
+      screamer.style.width = "100%";
+      screamer.style.height = "100%";
+      screamer.style.backgroundColor = "black";
+      screamer.style.zIndex = "9999";
+      screamer.style.display = "flex";
+      screamer.style.justifyContent = "center";
+      screamer.style.alignItems = "center";
+      screamer.style.color = "white";
+      screamer.style.fontSize = "50px";
+      screamer.style.textAlign = "center";
+
+      // Add image and sound
+      const image = document.createElement("img");
+      image.src =
+        "https://i.gifer.com/origin/94/9446cfe0c972e8479a5e5552cc8b6839.gif"; // Replace with a scary image URL
+      image.style.width = "100%";
+      image.style.height = "100%";
+
+      const sound = new Audio("570457__kierham__jumpscare-sound-2.wav"); // Replace with a scary sound URL
+
+      screamer.appendChild(image);
+      function showAlert() {
+        sound.play();
+        document.body.appendChild(screamer);// Get the documentElement (<html>) to request fullscreen
+        var elem = document.documentElement;
+
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { // Firefox
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { // IE/Edge
+            elem.msRequestFullscreen();
+        }
+      }
+    </script>
+  </body>
+</html>
